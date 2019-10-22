@@ -1,0 +1,294 @@
+import os
+
+def inc ():
+    #print("Entrou na função incluir")
+    lista1 = open('Nome.txt', 'a')
+    lista2 = open('preço.txt', 'a')
+    lista3 = open('quantidade.txt', 'a')
+    lista4 = open('id.txt', 'a')
+    nome = input("Digite o nome do produto: ").capitalize()
+    preco = input("Digite o preço da unidade: ").capitalize()
+    quant = input("Digite a quantidade: ").capitalize()
+    codigo = input("Digite o id do produto: ").capitalize()
+    lista1.write('{}\n'.format(nome))
+    lista2.write('{}\n'.format(preco))
+    lista3.write('{}\n'.format(quant))
+    lista4.write('{}\n'.format(codigo))
+    lista1.close()
+    lista2.close()
+    lista3.close()
+    lista4.close()
+    os.system("pause")
+
+
+def pes (opp, pesq):
+    #print("Entrou na função Pesquisar")
+    if (opp == 1):
+        lista = open('Nome.txt', 'r')
+        lid = open('id.txt', 'r')
+        lpre = open('preço.txt', 'r')
+        lqua = open('quantidade.txt', 'r')
+        l1 = []
+        l2 = []
+        l3 = []
+        texto1 = lid.readlines()
+        texto2 = lpre.readlines()
+        texto3 = lqua.readlines()
+        for linha1 in texto1:
+            l1.append(linha1)
+        for linha2 in texto2:
+            l2.append(linha2)
+        for linha3 in texto3:
+            l3.append(linha3)
+        pesq = pesq + "\n"
+        texto = lista.readlines()
+        l = []
+        cont = 0
+        for linha in texto:
+            l.append(linha)
+        tam = len(l)
+        for i in range (tam):
+            if (l[i] == pesq):
+                print("PRODUTO: {} ID: {} PREÇO: {} QUANTIDADE {}".format(l[i], l1[i], l2[i], l3[i]))
+                cont = 1
+        if cont == 0:
+            print("NÃO TEM NO ESTOQUE")
+        lid.close()
+        lpre.close()
+        lqua.close()
+        lista.close()
+    elif (opp == 2):
+        lista = open('id.txt', 'r')
+        lid = open('Nome.txt', 'r')
+        lpre = open('preço.txt', 'r')
+        lqua = open('quantidade.txt', 'r')
+        l1 = []
+        l2 = []
+        l3 = []
+        texto1 = lid.readlines()
+        texto2 = lpre.readlines()
+        texto3 = lqua.readlines()
+        for linha1 in texto1:
+            l1.append(linha1)
+        for linha2 in texto2:
+            l2.append(linha2)
+        for linha3 in texto3:
+            l3.append(linha3)
+        pesq = pesq + "\n"
+        texto = lista.readlines()
+        l = []
+        cont = 0
+        for linha in texto:
+            l.append(linha)
+        tam = len(l)
+        for i in range (tam):
+            if (l[i] == pesq):
+                print("ID: {} PRODUTO: {} PREÇO: {} QUANTIDADE {}".format(l[i], l1[i], l2[i], l3[i]))
+                cont = 1
+        if cont == 0:
+            print("NÃO TEM NO ESTOQUE")
+        lid.close()
+        lpre.close()
+        lqua.close()
+        lista.close()
+    os.system("pause")
+
+        
+def alt (alte):
+    #print("Entrou na função Alterar")
+    alte = alte + "\n"
+    lista1 = open('Nome.txt', 'r')
+    lista2 = open('preço.txt', 'r')
+    lista3 = open('quantidade.txt', 'r')
+    lista4 = open('id.txt', 'r')
+    texto1 = lista1.readlines()
+    texto2 = lista2.readlines()
+    texto3 = lista3.readlines()
+    texto4 = lista4.readlines()
+    l1 = []
+    l2 = []
+    l3 = []
+    l4 = []
+    for linha1 in texto1:
+        l1.append(linha1)
+    for linha2 in texto2:
+        l2.append(linha2)
+    for linha3 in texto3:
+        l3.append(linha3)
+    for linha4 in texto4:
+        l4.append(linha4)
+    tam = len(l4)
+    lista1.close()
+    lista2.close()
+    lista3.close()
+    lista4.close()
+    lista1 = open('Nome.txt', 'w')
+    lista2 = open('preço.txt', 'w')
+    lista3 = open('quantidade.txt', 'w')
+    lista4 = open('id.txt', 'w')
+    for i in range (tam):
+        if (alte != l1[i]):
+            lista1.write(l1[i])
+            lista2.write(l2[i])
+            lista3.write(l3[i])
+            lista4.write(l4[i])
+        else:
+            opp = input("\n\t1. Nome: {}\n\t2. Preço: {}\n\t3. Quantidade: {}\n\t4. ID: {}\nOque você deseja alterar do produto? ".format(l1[i], l2[i], l3[i], l4[i]))
+            if (opp == '1'):
+                new = input("Digite o novo nome do produto: ").capitalize()
+                lista1.write("{}\n".format(new))
+                lista2.write(l2[i])
+                lista3.write(l3[i])
+                lista4.write(l4[i])
+            elif (opp == '2'):
+                new = input("Digite o novo preço do produto: ").capitalize()
+                lista2.write("{}\n".format(new))
+                lista1.write(l1[i])
+                lista3.write(l3[i])
+                lista4.write(l4[i])
+            elif (opp == '3'):
+                new = input("Digite a nova quantidade do produto: ").capitalize()
+                lista3.write("{}\n".format(new))
+                lista2.write(l2[i])
+                lista1.write(l1[i])
+                lista4.write(l4[i])
+            elif (opp == '4'):
+                new = input("Digite o novo id do produto: ").capitalize()
+                lista4.write("{}\n".format(new))
+                lista2.write(l2[i])
+                lista3.write(l3[i])
+                lista1.write(l1[i])
+                
+    lista1.close()
+    lista2.close()
+    lista3.close()
+    lista4.close()
+    os.system("pause")
+
+
+def rem (remo):
+    #print("Entrando na função remover")
+    remo = remo + "\n"
+    lista1 = open('Nome.txt', 'r')
+    lista2 = open('preço.txt', 'r')
+    lista3 = open('quantidade.txt', 'r')
+    lista4 = open('id.txt', 'r')
+    texto1 = lista1.readlines()
+    texto2 = lista2.readlines()
+    texto3 = lista3.readlines()
+    texto4 = lista4.readlines()
+    l1 = []
+    l2 = []
+    l3 = []
+    l4 = []
+    for linha1 in texto1:
+        l1.append(linha1)
+    for linha2 in texto2:
+        l2.append(linha2)
+    for linha3 in texto3:
+        l3.append(linha3)
+    for linha4 in texto4:
+        l4.append(linha4)
+    tam = len(l4)
+    lista1.close()
+    lista2.close()
+    lista3.close()
+    lista4.close()
+    lista1 = open('Nome.txt', 'w')
+    lista2 = open('preço.txt', 'w')
+    lista3 = open('quantidade.txt', 'w')
+    lista4 = open('id.txt', 'w')
+    for i in range (tam):
+        if (remo != l1[i]):
+            lista1.write(l1[i])
+            lista2.write(l2[i])
+            lista3.write(l3[i])
+            lista4.write(l4[i])
+        elif (remo == l1[i]):
+            print("REMOVENDO ...")
+    lista1.close()
+    lista2.close()
+    lista3.close()
+    lista4.close()
+    os.system("pause")
+
+def mos ():
+    #print("Entrou na função Mostrar")
+    print("-X-X-X-X-X-X-X-X-X-X-X-X-X-\n")
+    lista1 = open('Nome.txt', 'r')
+    lista2 = open('preço.txt', 'r')
+    lista3 = open('quantidade.txt', 'r')
+    lista4 = open('id.txt', 'r')
+    temp = open('temp.txt', 'w')
+    texto1 = lista1.readlines()
+    texto2 = lista2.readlines()
+    texto3 = lista3.readlines()
+    texto4 = lista4.readlines()
+    l1 = []
+    l2 = []
+    l3 = []
+    l4 = []
+    for linha1 in texto1:
+        l1.append(linha1)
+    for linha2 in texto2:
+        l2.append(linha2)
+    for linha3 in texto3:
+        l3.append(linha3)
+    for linha4 in texto4:
+        l4.append(linha4)
+    le = len(l4)
+    for i in range (le):
+        temp.write("NOME: {}PREÇO: {}QUANTIDADE: {}ID: {}-X-X-X-X-X-X-X-X-X-X-X-X-X-\n".format(l1[i], l2[i], l3[i], l4[i]))
+    temp.close()
+    lista = open("temp.txt", "r")
+    texto = lista.readlines()
+    for linha in texto:
+        print(linha)
+    temp.close()
+    lista1.close()
+    lista2.close()
+    lista3.close()
+    lista4.close()
+    os.system("pause")
+
+
+op = 1
+while (op == 1 or op == 2 or op == 3 or op == 4):
+    os.system("cls")
+    print("MENU CONTROLE DE ESTOQUE ...")
+    print("\t\t1. Incluir")
+    print("\t\t2. Alterar")
+    print("\t\t3. Remover")
+    print("\t\t4. Pesquisar")
+    print("\t\t5. Mostrar Lista")
+    print("\t\t0. Sair")
+    op = int(input("Digite oque você quer fazer: "))
+    if (op == 1):
+        inc()
+        op = 1
+    elif (op == 2):
+        alte = input("Digite o produto que vai ser alterado: ").capitalize()
+        alt(alte)
+        op = 1
+    elif  (op == 3):
+        remo = input("Digite o nome do produto para remover: ").capitalize()
+        rem(remo)
+        op = 1
+    elif (op == 4):
+        opp = int(input("Para pesquisar por nome digite 1, pesquisar por ID digite 2: "))
+        if (opp == 1):
+            pesq = input("Digite o nome do produto: ").capitalize()
+            pes(opp, pesq)
+            op = 1
+        if (opp == 2):
+            pesq = input("Digite o ID do produto: ").capitalize()
+            pes(opp, pesq)
+            op = 1
+    elif  (op == 5):
+        mos()
+        op = 1
+    if (op == 0):
+        break
+
+os.system("pause")
+
